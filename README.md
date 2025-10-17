@@ -123,6 +123,7 @@ El sitio está optimizado para:
 
 ## 📄 Licencia
 
+© 2025 Nicolás Corera. Todos los derechos reservados.
 © 2025 RedBuilds. Todos los derechos reservados.
 
 ---
