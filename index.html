@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="RedBuilds - Tienda online de hardware, periféricos y componentes para PC. Las mejores ofertas en procesadores, placas de video, monitores y más."
+    />
+    <meta
+      name="keywords"
+      content="hardware, componentes PC, placas de video, procesadores, periféricos, gaming, notebooks, monitores, RedBuilds"
+    />
+    <meta name="author" content="RedBuilds" />
+    <meta
+      property="og:title"
+      content="RedBuilds - Hardware, PC Gamer y Periféricos"
+    />
+    <meta
+      property="og:description"
+      content="Tienda online de hardware y componentes para PC"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://redbuilds.com/" />
+    <meta
+      property="og:image"
+      content="https://redbuilds.com/images/og-image.jpg"
+    />
+    <meta name="theme-color" content="#dc2626" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>RedBuilds - Hardware, PC Gamer y Periféricos</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header Principal -->
+    <header>
+      <div class="top-bar">
+        <div class="container">
+          <p>Envíos a todo el país | Armamos tu PC a medida</p>
+          <nav aria-label="Navegación superior">
+            <ul>
+              <li><a href="/seguimiento">Seguimiento de pedido</a></li>
+              <li><a href="/ayuda">Ayuda</a></li>
+              <li><a href="/contacto">Contacto</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="main-header">
+        <div class="container">
+          <a href="/" aria-label="Ir a inicio" class="logo">
+            <img
+              src="https://i.postimg.cc/633bffF7/icono.png"
+              alt="RedBuilds Logo"
+            />
+            <h1>RedBuilds</h1>
+          </a>
+
+          <form role="search" action="/buscar" method="GET">
+            <label for="search-input" class="visually-hidden"
+              >Buscar productos</label
+            >
+            <input
+              type="search"
+              id="search-input"
+              name="q"
+              placeholder="Buscar productos..."
+              aria-label="Campo de búsqueda"
+            />
+            <button type="submit" aria-label="Buscar">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+
+          <nav aria-label="Navegación de usuario">
+            <ul>
+              <li>
+                <a href="/login" aria-label="Iniciar sesión">
+                  <span
+                    >Acceder <i class="fa-solid fa-right-to-bracket"></i
+                  ></span>
+                </a>
+              </li>
+              <li>
+                <a href="/carrito" aria-label="Ver carrito de compras">
+                  <span><i class="fa-solid fa-cart-shopping"></i></span>
+                  <span class="cart-count" aria-label="Productos en el carrito"
+                    >0</span
+                  >
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <div class="container">
+          <ul>
+            <li><a href="/productos">Productos</a></li>
+            <li><a href="/ofertas">Ofertas</a></li>
+            <li><a href="/arma-tu-pc">Armá tu PC</a></li>
+            <li><a href="/categorias/placas-video">Placas de Video</a></li>
+            <li><a href="/categorias/perifericos">Periféricos</a></li>
+            <li><a href="/categorias/monitores">Notebooks</a></li>
+            <li><a href="/ayuda">Ayuda</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main>
+      <!-- Banner de ofertas destacadas -->
+      <section class="hero-banner" aria-label="Ofertas destacadas">
+        <div class="container">
+          <div class="banner-slider">
+            <article class="banner-slide active">
+              <img
+                src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=1200&h=500&fit=crop"
+                alt="Oferta especial en placas de video NVIDIA"
+              />
+              <div class="banner-content">
+                <h2>Ofertas en Placas de Video</h2>
+                <p>Hasta 30% de descuento en modelos seleccionados</p>
+                <a href="/ofertas/placas-video" class="btn-banner"
+                  >Ver ofertas</a
+                >
+              </div>
+            </article>
+            <article class="banner-slide">
+              <img
+                src="https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=1200&h=500&fit=crop"
+                alt="Nuevos procesadores AMD Ryzen"
+              />
+              <div class="banner-content">
+                <h2>Procesadores AMD Ryzen</h2>
+                <p>La última generación ya disponible</p>
+                <a href="/categorias/procesadores/amd" class="btn-banner"
+                  >Ver productos</a
+                >
+              </div>
+            </article>
+            <article class="banner-slide">
+              <img
+                src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=1200&h=500&fit=crop"
+                alt="Armamos tu PC gamer a medida"
+              />
+              <div class="banner-content">
+                <h2>Armamos tu PC a Medida</h2>
+                <p>Configurá tu build ideal con asesoramiento profesional</p>
+                <a href="/arma-tu-pc" class="btn-banner">Empezar ahora</a>
+              </div>
+            </article>
+          </div>
+          <div class="banner-controls" aria-label="Controles del carrusel">
+            <div class="banner-indicators">
+              <button
+                type="button"
+                class="active"
+                aria-label="Ir a slide 1"
+              ></button>
+              <button type="button" aria-label="Ir a slide 2"></button>
+              <button type="button" aria-label="Ir a slide 3"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categorías destacadas -->
+      <section class="featured-categories">
+        <div class="container">
+          <h2>Categorías destacadas</h2>
+          <div class="categories-grid">
+            <article class="category-card">
+              <a href="/categorias/procesadores">
+                <img
+                  src="https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=300&h=300&fit=crop"
+                  alt=""
+                />
+                <h3>Procesadores</h3>
+                <p>Intel & AMD</p>
+              </a>
+            </article>
+            <article class="category-card">
+              <a href="/categorias/placas-video">
+                <img
+                  src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=300&h=300&fit=crop"
+                  alt=""
+                />
+                <h3>Placas de Video</h3>
+                <p>NVIDIA & AMD</p>
+              </a>
+            </article>
+            <article class="category-card">
+              <a href="/categorias/notebooks">
+                <img
+                  src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=300&h=300&fit=crop"
+                  alt=""
+                />
+                <h3>Notebooks</h3>
+                <p>Gaming & Trabajo</p>
+              </a>
+            </article>
+            <article class="category-card">
+              <a href="/categorias/monitores">
+                <img
+                  src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=300&h=300&fit=crop"
+                  alt=""
+                />
+                <h3>Monitores</h3>
+                <p>Gaming & Profesional</p>
+              </a>
+            </article>
+            <article class="category-card">
+              <a href="/categorias/perifericos">
+                <img
+                  src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300&h=300&fit=crop"
+                  alt=""
+                />
+                <h3>Periféricos</h3>
+                <p>Teclados, Mouse & Más</p>
+              </a>
+            </article>
+            <article class="category-card">
+              <a href="/categorias/almacenamiento">
+                <img
+                  src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=300&h=300&fit=crop"
+                  alt=""
+                />
+                <h3>Almacenamiento</h3>
+                <p>SSD & HDD</p>
+              </a>
+            </article>
+            <article class="category-card">
+              <a href="/categorias/memorias">
+                <img
+                  src="https://images.unsplash.com/photo-1562976540-1502c2145186?w=300&h=300&fit=crop"
+                  alt=""
+                />
+                <h3>Memorias RAM</h3>
+                <p>DDR4 & DDR5</p>
+              </a>
+            </article>
+            <article class="category-card">
+              <a href="/categorias/gabinetes">
+                <img
+                  src="https://images.unsplash.com/photo-1624705013726-8cb4f9415f40?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+                  alt=""
+                />
+                <h3>Gabinetes</h3>
+                <p>Todos los tamaños</p>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Productos destacados -->
+      <section class="featured-products">
+        <div class="container">
+          <div class="section-header">
+            <h2>Productos destacados</h2>
+            <a href="/productos" class="view-all">Ver todos</a>
+          </div>
+          <div class="products-grid">
+            <article class="product-card">
+              <div class="product-badge">Oferta</div>
+              <a href="/producto/procesador-intel-i7-14700k">
+                <div class="product-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=400&h=400&fit=crop"
+                    alt="Procesador Intel Core i7-14700K"
+                  />
+                </div>
+                <div class="product-info">
+                  <h3>Procesador Intel Core i7-14700K 20 Núcleos</h3>
+                  <p class="product-specs">Socket 1700 | 5.6 GHz Turbo</p>
+                  <div class="product-rating">
+                    <span
+                      class="stars"
+                      aria-label="Calificación: 4.5 de 5 estrellas"
+                      >★★★★☆</span
+                    >
+                    <span class="reviews">(127 reviews)</span>
+                  </div>
+                  <div class="product-price">
+                    <span class="price-before">$450.000</span>
+                    <span class="price-current">$399.000</span>
+                    <span class="discount">-11%</span>
+                  </div>
+                  <p class="product-installments">
+                    Hasta 12 cuotas sin interés
+                  </p>
+                  <p class="product-stock">En stock</p>
+                </div>
+              </a>
+              <button
+                type="button"
+                class="btn-add-cart"
+                aria-label="Agregar Procesador Intel Core i7-14700K al carrito"
+              >
+                Agregar al carrito
+              </button>
+            </article>
+
+            <article class="product-card">
+              <div class="product-badge new">Nuevo</div>
+              <a href="/producto/placa-video-rtx-4070-12gb">
+                <div class="product-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&h=400&fit=crop"
+                    alt="Placa de Video NVIDIA GeForce RTX 4070"
+                  />
+                </div>
+                <div class="product-info">
+                  <h3>Placa de Video NVIDIA GeForce RTX 4070 12GB GDDR6X</h3>
+                  <p class="product-specs">DLSS 3 | Ray Tracing</p>
+                  <div class="product-rating">
+                    <span
+                      class="stars"
+                      aria-label="Calificación: 5 de 5 estrellas"
+                      >★★★★★</span
+                    >
+                    <span class="reviews">(89 reviews)</span>
+                  </div>
+                  <div class="product-price">
+                    <span class="price-current">$899.000</span>
+                  </div>
+                  <p class="product-installments">
+                    Hasta 12 cuotas sin interés
+                  </p>
+                  <p class="product-stock">En stock</p>
+                </div>
+              </a>
+              <button
+                type="button"
+                class="btn-add-cart"
+                aria-label="Agregar Placa de Video RTX 4070 al carrito"
+              >
+                Agregar al carrito
+              </button>
+            </article>
+
+            <article class="product-card">
+              <a href="/producto/monitor-gaming-27-165hz">
+                <div class="product-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop"
+                    alt="Monitor Gaming 27 pulgadas"
+                  />
+                </div>
+                <div class="product-info">
+                  <h3>Monitor Gaming 27" QHD 165Hz 1ms</h3>
+                  <p class="product-specs">
+                    2560x1440 | IPS | FreeSync Premium
+                  </p>
+                  <div class="product-rating">
+                    <span
+                      class="stars"
+                      aria-label="Calificación: 4.5 de 5 estrellas"
+                      >★★★★☆</span
+                    >
+                    <span class="reviews">(203 reviews)</span>
+                  </div>
+                  <div class="product-price">
+                    <span class="price-current">$299.000</span>
+                  </div>
+                  <p class="product-installments">Hasta 6 cuotas sin interés</p>
+                  <p class="product-stock">Últimas unidades</p>
+                </div>
+              </a>
+              <button
+                type="button"
+                class="btn-add-cart"
+                aria-label="Agregar Monitor Gaming 27 pulgadas al carrito"
+              >
+                Agregar al carrito
+              </button>
+            </article>
+
+            <article class="product-card">
+              <div class="product-badge">Hot</div>
+              <a href="/producto/teclado-mecanico-rgb">
+                <div class="product-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=400&fit=crop"
+                    alt="Teclado Mecánico Gaming RGB"
+                  />
+                </div>
+                <div class="product-info">
+                  <h3>Teclado Mecánico Gaming RGB Switch Red</h3>
+                  <p class="product-specs">Layout Español | Hot-Swappable</p>
+                  <div class="product-rating">
+                    <span
+                      class="stars"
+                      aria-label="Calificación: 4 de 5 estrellas"
+                      >★★★★☆</span
+                    >
+                    <span class="reviews">(156 reviews)</span>
+                  </div>
+                  <div class="product-price">
+                    <span class="price-current">$89.000</span>
+                  </div>
+                  <p class="product-installments">Hasta 3 cuotas sin interés</p>
+                  <p class="product-stock">En stock</p>
+                </div>
+              </a>
+              <button
+                type="button"
+                class="btn-add-cart"
+                aria-label="Agregar Teclado Mecánico al carrito"
+              >
+                Agregar al carrito
+              </button>
+            </article>
+
+            <article class="product-card">
+              <a href="/producto/ssd-nvme-1tb">
+                <div class="product-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=400&h=400&fit=crop"
+                    alt="SSD NVMe M.2 1TB"
+                  />
+                </div>
+                <div class="product-info">
+                  <h3>SSD NVMe M.2 1TB Gen4 7000MB/s</h3>
+                  <p class="product-specs">PCIe 4.0 | Disipador incluido</p>
+                  <div class="product-rating">
+                    <span
+                      class="stars"
+                      aria-label="Calificación: 5 de 5 estrellas"
+                      >★★★★★</span
+                    >
+                    <span class="reviews">(342 reviews)</span>
+                  </div>
+                  <div class="product-price">
+                    <span class="price-current">$125.000</span>
+                  </div>
+                  <p class="product-installments">Hasta 6 cuotas sin interés</p>
+                  <p class="product-stock">En stock</p>
+                </div>
+              </a>
+              <button
+                type="button"
+                class="btn-add-cart"
+                aria-label="Agregar SSD NVMe al carrito"
+              >
+                Agregar al carrito
+              </button>
+            </article>
+
+            <article class="product-card">
+              <div class="product-badge">Oferta</div>
+              <a href="/producto/mouse-gaming-wireless">
+                <div class="product-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop"
+                    alt="Mouse Gaming Wireless"
+                  />
+                </div>
+                <div class="product-info">
+                  <h3>Mouse Gaming Wireless 25K DPI RGB</h3>
+                  <p class="product-specs">Sensor óptico | 80hrs batería</p>
+                  <div class="product-rating">
+                    <span
+                      class="stars"
+                      aria-label="Calificación: 4.5 de 5 estrellas"
+                      >★★★★☆</span
+                    >
+                    <span class="reviews">(278 reviews)</span>
+                  </div>
+                  <div class="product-price">
+                    <span class="price-before">$75.000</span>
+                    <span class="price-current">$59.900</span>
+                    <span class="discount">-20%</span>
+                  </div>
+                  <p class="product-installments">Hasta 3 cuotas sin interés</p>
+                  <p class="product-stock">En stock</p>
+                </div>
+              </a>
+              <button
+                type="button"
+                class="btn-add-cart"
+                aria-label="Agregar Mouse Gaming al carrito"
+              >
+                Agregar al carrito
+              </button>
+            </article>
+
+            <article class="product-card">
+              <a href="/producto/memoria-ram-32gb-ddr5">
+                <div class="product-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1562976540-1502c2145186?w=400&h=400&fit=crop"
+                    alt="Memoria RAM DDR5 32GB"
+                  />
+                </div>
+                <div class="product-info">
+                  <h3>Memoria RAM DDR5 32GB (2x16GB) 6000MHz RGB</h3>
+                  <p class="product-specs">CL30 | Compatible AMD & Intel</p>
+                  <div class="product-rating">
+                    <span
+                      class="stars"
+                      aria-label="Calificación: 5 de 5 estrellas"
+                      >★★★★★</span
+                    >
+                    <span class="reviews">(187 reviews)</span>
+                  </div>
+                  <div class="product-price">
+                    <span class="price-current">$189.000</span>
+                  </div>
+                  <p class="product-installments">Hasta 6 cuotas sin interés</p>
+                  <p class="product-stock">En stock</p>
+                </div>
+              </a>
+              <button
+                type="button"
+                class="btn-add-cart"
+                aria-label="Agregar Memoria RAM DDR5 al carrito"
+              >
+                Agregar al carrito
+              </button>
+            </article>
+
+            <article class="product-card">
+              <div class="product-badge new">Nuevo</div>
+              <a href="/producto/gabinete-mid-tower">
+                <div class="product-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400&h=400&fit=crop"
+                    alt="Gabinete Mid Tower ATX"
+                  />
+                </div>
+                <div class="product-info">
+                  <h3>Gabinete Mid Tower ATX RGB Vidrio Templado</h3>
+                  <p class="product-specs">4x Fans RGB | USB-C frontal</p>
+                  <div class="product-rating">
+                    <span
+                      class="stars"
+                      aria-label="Calificación: 4.5 de 5 estrellas"
+                      >★★★★☆</span
+                    >
+                    <span class="reviews">(94 reviews)</span>
+                  </div>
+                  <div class="product-price">
+                    <span class="price-current">$145.000</span>
+                  </div>
+                  <p class="product-installments">Hasta 6 cuotas sin interés</p>
+                  <p class="product-stock">En stock</p>
+                </div>
+              </a>
+              <button
+                type="button"
+                class="btn-add-cart"
+                aria-label="Agregar Gabinete al carrito"
+              >
+                Agregar al carrito
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ofertas especiales -->
+      <section class="special-offers">
+        <div class="container">
+          <div class="section-header">
+            <h2>Ofertas especiales</h2>
+            <a href="/ofertas" class="view-all">Ver todas las ofertas</a>
+          </div>
+          <div class="products-grid">
+            <article class="product-card">
+              <div class="product-badge">-25%</div>
+              <a href="/producto/auriculares-gaming-71">
+                <div class="product-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400&h=400&fit=crop"
+                    alt="Auriculares Gaming 7.1"
+                  />
+                </div>
+                <div class="product-info">
+                  <h3>Auriculares Gaming 7.1 Surround USB</h3>
+                  <p class="product-specs">Micrófono retráctil | RGB</p>
+                  <div class="product-rating">
+                    <span
+                      class="stars"
+                      aria-label="Calificación: 4 de 5 estrellas"
+                      >★★★★☆</span
+                    >
+                    <span class="reviews">(167 reviews)</span>
+                  </div>
+                  <div class="product-price">
+                    <span class="price-before">$80.000</span>
+                    <span class="price-current">$59.900</span>
+                    <span class="discount">-25%</span>
+                  </div>
+                  <p class="product-installments">Hasta 3 cuotas sin interés</p>
+                  <p class="product-stock">Stock limitado</p>
+                </div>
+              </a>
+              <button
+                type="button"
+                class="btn-add-cart"
+                aria-label="Agregar Auriculares Gaming al carrito"
+              >
+                Agregar al carrito
+              </button>
+            </article>
+
+            <article class="product-card">
+              <div class="product-badge">-15%</div>
+              <a href="/producto/fuente-850w-modular">
+                <div class="product-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400&h=400&fit=crop"
+                    alt="Fuente de Poder 850W"
+                  />
+                </div>
+                <div class="product-info">
+                  <h3>Fuente de Poder 850W 80 Plus Gold Modular</h3>
+                  <p class="product-specs">Full modular | Certificada</p>
+                  <div class="product-rating">
+                    <span
+                      class="stars"
+                      aria-label="Calificación: 5 de 5 estrellas"
+                      >★★★★★</span
+                    >
+                    <span class="reviews">(312 reviews)</span>
+                  </div>
+                  <div class="product-price">
+                    <span class="price-before">$199.000</span>
+                    <span class="price-current">$169.000</span>
+                    <span class="discount">-15%</span>
+                  </div>
+                  <p class="product-installments">
+                    Hasta 12 cuotas sin interés
+                  </p>
+                  <p class="product-stock">En stock</p>
+                </div>
+              </a>
+              <button
+                type="button"
+                class="btn-add-cart"
+                aria-label="Agregar Fuente de Poder al carrito"
+              >
+                Agregar al carrito
+              </button>
+            </article>
+
+            <article class="product-card">
+              <div class="product-badge">-30%</div>
+              <a href="/producto/silla-gaming-ergonomica">
+                <div class="product-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1612011213721-3936d387f318?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=638"
+                    alt="Silla Gaming Ergonómica"
+                  />
+                </div>
+                <div class="product-info">
+                  <h3>Silla Gaming Ergonómica con Lumbar</h3>
+                  <p class="product-specs">Reclinable 180° | Reposabrazos 4D</p>
+                  <div class="product-rating">
+                    <span
+                      class="stars"
+                      aria-label="Calificación: 4.5 de 5 estrellas"
+                      >★★★★☆</span
+                    >
+                    <span class="reviews">(423 reviews)</span>
+                  </div>
+                  <div class="product-price">
+                    <span class="price-before">$350.000</span>
+                    <span class="price-current">$245.000</span>
+                    <span class="discount">-30%</span>
+                  </div>
+                  <p class="product-installments">
+                    Hasta 12 cuotas sin interés
+                  </p>
+                  <p class="product-stock">Últimas unidades</p>
+                </div>
+              </a>
+              <button
+                type="button"
+                class="btn-add-cart"
+                aria-label="Agregar Silla Gaming al carrito"
+              >
+                Agregar al carrito
+              </button>
+            </article>
+
+            <article class="product-card">
+              <div class="product-badge">-20%</div>
+              <a href="/producto/webcam-1080p">
+                <div class="product-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1614588876378-b2ffa4520c22?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1160"
+                    alt="Webcam Full HD 1080p"
+                  />
+                </div>
+                <div class="product-info">
+                  <h3>Webcam Full HD 1080p con Micrófono</h3>
+                  <p class="product-specs">60fps | Autofocus | Luz anillo</p>
+                  <div class="product-rating">
+                    <span
+                      class="stars"
+                      aria-label="Calificación: 4 de 5 estrellas"
+                      >★★★★☆</span
+                    >
+                    <span class="reviews">(198 reviews)</span>
+                  </div>
+                  <div class="product-price">
+                    <span class="price-before">$95.000</span>
+                    <span class="price-current">$76.000</span>
+                    <span class="discount">-20%</span>
+                  </div>
+                  <p class="product-installments">Hasta 3 cuotas sin interés</p>
+                  <p class="product-stock">En stock</p>
+                </div>
+              </a>
+              <button
+                type="button"
+                class="btn-add-cart"
+                aria-label="Agregar Webcam al carrito"
+              >
+                Agregar al carrito
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Builds destacados -->
+      <section class="featured-builds">
+        <div class="container">
+          <div class="section-header">
+            <h2>Builds recomendados</h2>
+            <a href="/arma-tu-pc" class="view-all">Armá el tuyo</a>
+          </div>
+          <div class="builds-grid">
+            <article class="build-card">
+              <div class="build-image">
+                <img
+                  src="https://images.unsplash.com/photo-1726441951998-56e7559942ed?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=686"
+                  alt="PC Build Entry Level"
+                />
+              </div>
+              <div class="build-info">
+                <h3>Build Entry Level</h3>
+                <p class="build-description">
+                  Ideal para gaming en 1080p y tareas del día a día
+                </p>
+                <ul class="build-specs">
+                  <li>Ryzen 5 5600</li>
+                  <li>RTX 3060 12GB</li>
+                  <li>16GB DDR4 3200MHz</li>
+                  <li>SSD 500GB NVMe</li>
+                </ul>
+                <div class="build-price">
+                  <span class="price-label">Desde</span>
+                  <span class="price-current">$1.549.000</span>
+                </div>
+                <a href="/build/mid-range" class="btn-build"
+                  >Ver build completo</a
+                >
+              </div>
+            </article>
+
+            <article class="build-card">
+              <div class="build-image">
+                <img
+                  src="https://images.unsplash.com/photo-1587302912306-cf1ed9c33146?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=680"
+                  alt="PC Build High End"
+                />
+              </div>
+              <div class="build-info">
+                <h3>Build High End</h3>
+                <p class="build-description">
+                  La máxima performance para 4K y streaming
+                </p>
+                <ul class="build-specs">
+                  <li>Intel i9-14900K</li>
+                  <li>RTX 4090 24GB</li>
+                  <li>64GB DDR5 6400MHz</li>
+                  <li>SSD 2TB Gen4 NVMe</li>
+                </ul>
+                <div class="build-price">
+                  <span class="price-label">Desde</span>
+                  <span class="price-current">$3.299.000</span>
+                </div>
+                <a href="/build/high-end" class="btn-build"
+                  >Ver build completo</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Beneficios -->
+      <section class="benefits">
+        <div class="container">
+          <h2 class="visually-hidden">Beneficios de comprar en RedBuilds</h2>
+          <ul class="benefits-grid">
+            <li class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fa-solid fa-truck"></i>
+              </div>
+              <h3>Envíos a todo el país</h3>
+              <p>
+                Recibí tu pedido en la puerta de tu casa con seguimiento en
+                tiempo real
+              </p>
+            </li>
+            <li class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fa-solid fa-credit-card"></i>
+              </div>
+              <h3>Hasta 12 cuotas sin interés</h3>
+              <p>
+                Con tarjetas de crédito seleccionadas y financiación especial
+              </p>
+            </li>
+            <li class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h3>Compra 100% segura</h3>
+              <p>Protección certificada en todas tus transacciones</p>
+            </li>
+            <li class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+              <h3>Soporte técnico especializado</h3>
+              <p>Asesoramiento personalizado pre y post venta</p>
+            </li>
+            <li class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <h3>Garantía oficial</h3>
+              <p>
+                Todos nuestros productos cuentan con garantía del fabricante
+              </p>
+            </li>
+            <li class="benefit-item">
+              <div class="benefit-icon">
+                <i class="fa-solid fa-toolbox"></i>
+              </div>
+              <h3>Servicio de armado</h3>
+              <p>Armamos y testeamos tu PC antes de enviártela</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Marcas -->
+      <section class="brands">
+        <div class="container">
+          <h2>Marcas destacadas</h2>
+          <div class="brands-slider">
+            <ul class="brands-grid">
+              <li class="brand-item">
+                <a href="/marca/intel" aria-label="Ver productos Intel">
+                  <img
+                    src="https://images.unsplash.com/photo-1716772912244-78d30d4f1e65?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1228"
+                    alt="Intel"
+                  />
+                </a>
+              </li>
+              <li class="brand-item">
+                <a href="/marca/amd" aria-label="Ver productos AMD">
+                  <img
+                    src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1074"
+                    alt="AMD"
+                  />
+                </a>
+              </li>
+              <li class="brand-item">
+                <a href="/marca/nvidia" aria-label="Ver productos NVIDIA">
+                  <img
+                    src="https://images.unsplash.com/photo-1716967318503-05b7064afa41?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1332"
+                    alt="NVIDIA"
+                  />
+                </a>
+              </li>
+              <li class="brand-item">
+                <a href="/marca/asus" aria-label="Ver productos ASUS">
+                  <img
+                    src="https://images.unsplash.com/photo-1655437448243-08a76744b048?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1162"
+                    alt="ASUS"
+                  />
+                </a>
+              </li>
+              <li class="brand-item">
+                <a href="/marca/msi" aria-label="Ver productos MSI">
+                  <img
+                    src="https://images.unsplash.com/photo-1729934746949-1656fbb47006?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1332"
+                    alt="MSI"
+                  />
+                </a>
+              </li>
+              <li class="brand-item">
+                <a href="/marca/gigabyte" aria-label="Ver productos Gigabyte">
+                  <img
+                    src="https://images.unsplash.com/photo-1623181748933-cad791db6bb9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1171"
+                    alt="Gigabyte"
+                  />
+                </a>
+              </li>
+              <li class="brand-item">
+                <a href="/marca/corsair" aria-label="Ver productos Corsair">
+                  <img
+                    src="https://images.unsplash.com/photo-1658673873397-9f9e3007643c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+                    alt="Corsair"
+                  />
+                </a>
+              </li>
+              <li class="brand-item">
+                <a href="/marca/logitech" aria-label="Ver productos Logitech">
+                  <img
+                    src="https://images.unsplash.com/photo-1697205784398-bb453b1b16d1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+                    alt="Logitech"
+                  />
+                </a>
+              </li>
+              <li class="brand-item">
+                <a href="/marca/hyperx" aria-label="Ver productos HyperX">
+                  <img
+                    src="https://images.unsplash.com/photo-1660491076061-fe515dc22e66?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1074"
+                    alt="HyperX"
+                  />
+                </a>
+              </li>
+              <li class="brand-item">
+                <a href="/marca/razer" aria-label="Ver productos Razer">
+                  <img
+                    src="https://images.unsplash.com/photo-1641548513310-0c10f90984ca?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+                    alt="Razer"
+                  />
+                </a>
+              </li>
+              <li class="brand-item">
+                <a href="/marca/samsung" aria-label="Ver productos Samsung">
+                  <img
+                    src="https://images.unsplash.com/photo-1661347998423-b15d37d6f61e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+                    alt="Samsung"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="newsletter">
+        <div class="container">
+          <div class="newsletter-content">
+            <h2>Suscribite a nuestro newsletter</h2>
+            <p>
+              Recibí las mejores ofertas y novedades directamente en tu email
+            </p>
+            <form
+              action="/newsletter/subscribe"
+              method="POST"
+              class="newsletter-form"
+            >
+              <label for="newsletter-email" class="visually-hidden"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="newsletter-email"
+                name="email"
+                placeholder="Tu email"
+                required
+                aria-required="true"
+              />
+              <button type="submit">Suscribirme</button>
+            </form>
+            <p class="newsletter-privacy">
+              <small
+                >Al suscribirte aceptás nuestra
+                <a href="/politica-privacidad">política de privacidad</a></small
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-main">
+        <div class="container">
+          <div class="footer-grid">
+            <section class="footer-section">
+              <h2>RedBuilds</h2>
+              <p>
+                Tu tienda de confianza para armar la PC de tus sueños. Hardware
+                de calidad, asesoramiento profesional y el mejor servicio
+                post-venta.
+              </p>
+              <div class="footer-social">
+                <h3>Seguinos en redes</h3>
+                <nav aria-label="Redes sociales">
+                  <ul>
+                    <li>
+                      <a
+                        href="https://facebook.com/redbuilds"
+                        aria-label="Seguinos en Facebook"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <i class="fa-brands fa-facebook-f"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://instagram.com/redbuilds"
+                        aria-label="Seguinos en Instagram"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <i class="fa-brands fa-instagram"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://twitter.com/redbuilds"
+                        aria-label="Seguinos en Twitter"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <i class="fa-brands fa-x-twitter"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://youtube.com/redbuilds"
+                        aria-label="Suscribite en YouTube"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <i class="fa-brands fa-youtube"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://tiktok.com/@redbuilds"
+                        aria-label="Seguinos en TikTok"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <i class="fa-brands fa-tiktok"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </section>
+
+            <section class="footer-section">
+              <h2>Atención al cliente</h2>
+              <nav aria-label="Navegación de atención al cliente">
+                <ul>
+                  <li>
+                    <a href="/preguntas-frecuentes">Preguntas frecuentes</a>
+                  </li>
+                  <li><a href="/como-comprar">Cómo comprar</a></li>
+                  <li><a href="/medios-de-pago">Medios de pago</a></li>
+                  <li><a href="/envios">Envíos y entregas</a></li>
+                  <li>
+                    <a href="/cambios-devoluciones">Cambios y devoluciones</a>
+                  </li>
+                  <li><a href="/garantias">Garantías</a></li>
+                  <li><a href="/seguimiento">Seguí tu pedido</a></li>
+                  <li><a href="/reclamos">Centro de reclamos</a></li>
+                </ul>
+              </nav>
+            </section>
+
+            <section class="footer-section">
+              <h2>Información</h2>
+              <nav aria-label="Navegación de información">
+                <ul>
+                  <li><a href="/sobre-nosotros">Sobre nosotros</a></li>
+                  <li><a href="/locales">Nuestros locales</a></li>
+                  <li><a href="/arma-tu-pc">Armá tu PC</a></li>
+                  <li><a href="/servicio-tecnico">Servicio técnico</a></li>
+                  <li><a href="/blog">Blog y tutoriales</a></li>
+                  <li>
+                    <a href="/trabaja-con-nosotros">Trabajá con nosotros</a>
+                  </li>
+                  <li>
+                    <a href="/terminos-condiciones">Términos y condiciones</a>
+                  </li>
+                  <li>
+                    <a href="/politica-privacidad">Política de privacidad</a>
+                  </li>
+                </ul>
+              </nav>
+            </section>
+
+            <section class="footer-section">
+              <h2>Contacto</h2>
+              <address>
+                <div class="contact-item">
+                  <h3>Email</h3>
+                  <p>
+                    <a href="mailto:ventas@redbuilds.com"
+                      >ventas@redbuilds.com</a
+                    >
+                  </p>
+                  <p>
+                    <a href="mailto:soporte@redbuilds.com"
+                      >soporte@redbuilds.com</a
+                    >
+                  </p>
+                </div>
+                <div class="contact-item">
+                  <h3>WhatsApp</h3>
+                  <p>
+                    <a
+                      href="https://wa.me/5491112345678"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >+54 9 11 1234-5678</a
+                    >
+                  </p>
+                </div>
+                <div class="contact-item">
+                  <h3>Teléfono</h3>
+                  <p><a href="tel:+541143217890">011 4321-7890</a></p>
+                </div>
+                <div class="contact-item">
+                  <h3>Horario de atención</h3>
+                  <p>Lunes a viernes: 9:00 a 19:00hs</p>
+                  <p>Sábados: 10:00 a 14:00hs</p>
+                </div>
+                <div class="contact-item">
+                  <h3>Showroom</h3>
+                  <p>Av. Corrientes 1234, CABA</p>
+                  <p>Buenos Aires, Argentina</p>
+                </div>
+              </address>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="footer-bottom-content">
+            <p>&copy; 2025 RedBuilds. Todos los derechos reservados.</p>
+            <p>
+              <a href="/terminos-condiciones">Términos y Condiciones</a> |
+              <a href="/politica-privacidad">Política de Privacidad</a> |
+              <a href="/defensa-consumidor">Defensa del Consumidor</a> |
+              <a href="/boton-arrepentimiento">Botón de Arrepentimiento</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
