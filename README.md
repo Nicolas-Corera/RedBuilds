@@ -14,7 +14,7 @@ RedBuilds es una tienda online especializada en hardware, componentes para PC, p
 - **Productos destacados** y ofertas especiales
 - **Builds recomendados** para diferentes presupuestos
 - **Diseño responsive** optimizado para todos los dispositivos
-- **Newsletter** para suscripción a ofertas
+- **Formulario de contacto** para fácil contacto
 - **Información de marcas** destacadas
 
 ## 🛠️ Tecnologías Utilizadas
@@ -87,6 +87,12 @@ redbuilds/
 - Soporte técnico
 - Garantía oficial
 - Servicio de armado
+
+### Formulario de Contacto
+- Formulario completo con validación
+- Múltiples opciones de asunto
+- Cajas de información de contacto rápido
+- Diseño responsivo y accesible
 
 ### Footer
 - Información de la empresa
