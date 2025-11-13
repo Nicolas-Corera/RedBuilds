@@ -3,7 +3,7 @@ let cart = [];
 let products = [];
 
 // ==================== INICIALIZACIÓN ====================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   initializeApp();
 });
 
@@ -27,17 +27,17 @@ function initializeApp() {
  */
 function initializeBannerSlider() {
   let currentSlide = 0;
-  const slides = document.querySelectorAll('.banner-slide');
-  const indicators = document.querySelectorAll('.banner-indicators button');
+  const slides = document.querySelectorAll(".banner-slide");
+  const indicators = document.querySelectorAll(".banner-indicators button");
   const totalSlides = slides.length;
 
   // Función para mostrar un slide específico
   function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove('active'));
-    indicators.forEach(indicator => indicator.classList.remove('active'));
-    
-    slides[index].classList.add('active');
-    indicators[index].classList.add('active');
+    slides.forEach((slide) => slide.classList.remove("active"));
+    indicators.forEach((indicator) => indicator.classList.remove("active"));
+
+    slides[index].classList.add("active");
+    indicators[index].classList.add("active");
   }
 
   // Función para avanzar al siguiente slide
@@ -48,7 +48,7 @@ function initializeBannerSlider() {
 
   // Función para ir a un slide específico
   indicators.forEach((indicator, index) => {
-    indicator.addEventListener('click', () => {
+    indicator.addEventListener("click", () => {
       currentSlide = index;
       showSlide(currentSlide);
     });
@@ -64,25 +64,28 @@ function initializeBannerSlider() {
  */
 async function fetchProducts() {
   try {
-    const response = await fetch('https://fakestoreapi.com/products');
-    
+    const response = await fetch("https://fakestoreapi.com/products");
+
     if (!response.ok) {
-      throw new Error('Error al cargar los productos');
+      throw new Error("Error al cargar los productos");
     }
-    
+
     const allProducts = await response.json();
-    
+
     // Filtrar solo productos de categoría 'electronics' que son más relacionados con tecnología
-    products = allProducts.filter(product => product.category === 'electronics');
-    
+    products = allProducts.filter(
+      (product) => product.category === "electronics"
+    );
+
     // Limitar a 12 productos
     products = products.slice(0, 12);
-    
+
     renderProducts(products);
-    
   } catch (error) {
-    console.error('Error fetching products:', error);
-    showErrorMessage('No se pudieron cargar los productos. Por favor, intenta más tarde.');
+    console.error("Error fetching products:", error);
+    showErrorMessage(
+      "No se pudieron cargar los productos. Por favor, intenta más tarde."
+    );
   }
 }
 
@@ -91,15 +94,17 @@ async function fetchProducts() {
  * @param {Array} productsToRender - Array de productos a renderizar
  */
 function renderProducts(productsToRender) {
-  const productsGrid = document.querySelector('.featured-products .products-grid');
-  
+  const productsGrid = document.querySelector(
+    ".featured-products .products-grid"
+  );
+
   if (!productsGrid) return;
-  
+
   // Limpiar productos existentes (mantener solo los primeros 8 productos estáticos)
-  const staticProducts = productsGrid.querySelectorAll('.product-card');
-  
+  const staticProducts = productsGrid.querySelectorAll(".product-card");
+
   // Agregar nuevos productos de la API
-  productsToRender.forEach(product => {
+  productsToRender.forEach((product) => {
     const productCard = createProductCard(product);
     productsGrid.appendChild(productCard);
   });
@@ -111,17 +116,17 @@ function renderProducts(productsToRender) {
  * @returns {HTMLElement} - Elemento DOM de la tarjeta
  */
 function createProductCard(product) {
-  const article = document.createElement('article');
-  article.className = 'product-card';
-  
+  const article = document.createElement("article");
+  article.className = "product-card";
+
   // Convertir precio a formato argentino
   const priceARS = Math.round(product.price * 1000);
-  const formattedPrice = priceARS.toLocaleString('es-AR');
-  
+  const formattedPrice = priceARS.toLocaleString("es-AR");
+
   // Calcular rating en estrellas
   const stars = generateStars(product.rating?.rate || 4);
   const reviews = product.rating?.count || 0;
-  
+
   article.innerHTML = `
     <a href="#producto-${product.id}">
       <div class="product-image">
@@ -131,7 +136,9 @@ function createProductCard(product) {
         <h3>${truncateText(product.title, 60)}</h3>
         <p class="product-specs">${truncateText(product.description, 80)}</p>
         <div class="product-rating">
-          <span class="stars" aria-label="Calificación: ${product.rating?.rate || 4} de 5 estrellas">${stars}</span>
+          <span class="stars" aria-label="Calificación: ${
+            product.rating?.rate || 4
+          } de 5 estrellas">${stars}</span>
           <span class="reviews">(${reviews} reviews)</span>
         </div>
         <div class="product-price">
@@ -141,15 +148,17 @@ function createProductCard(product) {
         <p class="product-stock">En stock</p>
       </div>
     </a>
-    <button type="button" class="btn-add-cart" data-product-id="${product.id}" aria-label="Agregar ${product.title} al carrito">
+    <button type="button" class="btn-add-cart" data-product-id="${
+      product.id
+    }" aria-label="Agregar ${product.title} al carrito">
       Agregar al carrito
     </button>
   `;
-  
+
   // Agregar event listener al botón
-  const addButton = article.querySelector('.btn-add-cart');
-  addButton.addEventListener('click', () => addToCart(product));
-  
+  const addButton = article.querySelector(".btn-add-cart");
+  addButton.addEventListener("click", () => addToCart(product));
+
   return article;
 }
 
@@ -161,21 +170,21 @@ function createProductCard(product) {
 function generateStars(rating) {
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;
-  let stars = '';
-  
+  let stars = "";
+
   for (let i = 0; i < fullStars; i++) {
-    stars += '★';
+    stars += "★";
   }
-  
+
   if (hasHalfStar) {
-    stars += '★';
+    stars += "★";
   }
-  
+
   const emptyStars = 5 - Math.ceil(rating);
   for (let i = 0; i < emptyStars; i++) {
-    stars += '☆';
+    stars += "☆";
   }
-  
+
   return stars;
 }
 
@@ -187,7 +196,7 @@ function generateStars(rating) {
  */
 function truncateText(text, maxLength) {
   if (text.length <= maxLength) return text;
-  return text.substring(0, maxLength) + '...';
+  return text.substring(0, maxLength) + "...";
 }
 
 /**
@@ -195,8 +204,8 @@ function truncateText(text, maxLength) {
  * @param {string} message - Mensaje a mostrar
  */
 function showErrorMessage(message) {
-  const errorDiv = document.createElement('div');
-  errorDiv.className = 'error-message';
+  const errorDiv = document.createElement("div");
+  errorDiv.className = "error-message";
   errorDiv.style.cssText = `
     position: fixed;
     top: 100px;
@@ -210,11 +219,11 @@ function showErrorMessage(message) {
     animation: slideIn 0.3s ease;
   `;
   errorDiv.textContent = message;
-  
+
   document.body.appendChild(errorDiv);
-  
+
   setTimeout(() => {
-    errorDiv.style.animation = 'slideOut 0.3s ease';
+    errorDiv.style.animation = "slideOut 0.3s ease";
     setTimeout(() => errorDiv.remove(), 300);
   }, 3000);
 }
@@ -225,8 +234,8 @@ function showErrorMessage(message) {
  * @param {Object} product - Producto a agregar
  */
 function addToCart(product) {
-  const existingProduct = cart.find(item => item.id === product.id);
-  
+  const existingProduct = cart.find((item) => item.id === product.id);
+
   if (existingProduct) {
     existingProduct.quantity += 1;
   } else {
@@ -235,13 +244,13 @@ function addToCart(product) {
       title: product.title,
       price: Math.round(product.price * 1000),
       image: product.image,
-      quantity: 1
+      quantity: 1,
     });
   }
-  
+
   saveCartToStorage();
   updateCartUI();
-  showCartNotification('Producto agregado al carrito');
+  showCartNotification("Producto agregado al carrito");
 }
 
 /**
@@ -249,7 +258,7 @@ function addToCart(product) {
  * @param {number} productId - ID del producto a eliminar
  */
 function removeFromCart(productId) {
-  cart = cart.filter(item => item.id !== productId);
+  cart = cart.filter((item) => item.id !== productId);
   saveCartToStorage();
   updateCartUI();
   renderCartItems();
@@ -261,8 +270,8 @@ function removeFromCart(productId) {
  * @param {number} newQuantity - Nueva cantidad
  */
 function updateCartQuantity(productId, newQuantity) {
-  const product = cart.find(item => item.id === productId);
-  
+  const product = cart.find((item) => item.id === productId);
+
   if (product) {
     if (newQuantity <= 0) {
       removeFromCart(productId);
@@ -279,14 +288,14 @@ function updateCartQuantity(productId, newQuantity) {
  * Guarda el carrito en localStorage
  */
 function saveCartToStorage() {
-  localStorage.setItem('redbuilds_cart', JSON.stringify(cart));
+  localStorage.setItem("redbuilds_cart", JSON.stringify(cart));
 }
 
 /**
  * Carga el carrito desde localStorage
  */
 function loadCartFromStorage() {
-  const savedCart = localStorage.getItem('redbuilds_cart');
+  const savedCart = localStorage.getItem("redbuilds_cart");
   if (savedCart) {
     cart = JSON.parse(savedCart);
   }
@@ -296,7 +305,7 @@ function loadCartFromStorage() {
  * Actualiza el contador del carrito en el header
  */
 function updateCartUI() {
-  const cartCount = document.querySelector('.cart-count');
+  const cartCount = document.querySelector(".cart-count");
   if (cartCount) {
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartCount.textContent = totalItems;
@@ -308,8 +317,8 @@ function updateCartUI() {
  * @param {string} message - Mensaje a mostrar
  */
 function showCartNotification(message) {
-  const notification = document.createElement('div');
-  notification.className = 'cart-notification';
+  const notification = document.createElement("div");
+  notification.className = "cart-notification";
   notification.style.cssText = `
     position: fixed;
     top: 100px;
@@ -325,11 +334,11 @@ function showCartNotification(message) {
   notification.innerHTML = `
     <i class="fa-solid fa-check-circle"></i> ${message}
   `;
-  
+
   document.body.appendChild(notification);
-  
+
   setTimeout(() => {
-    notification.style.animation = 'slideOut 0.3s ease';
+    notification.style.animation = "slideOut 0.3s ease";
     setTimeout(() => notification.remove(), 300);
   }, 2000);
 }
@@ -339,7 +348,7 @@ function showCartNotification(message) {
  * @returns {number} - Total en pesos
  */
 function calculateCartTotal() {
-  return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+  return cart.reduce((total, item) => total + item.price * item.quantity, 0);
 }
 
 // ==================== MODAL DEL CARRITO ====================
@@ -348,10 +357,10 @@ function calculateCartTotal() {
  */
 function initializeCartModal() {
   // Crear modal si no existe
-  if (!document.getElementById('cart-modal')) {
-    const modal = document.createElement('div');
-    modal.id = 'cart-modal';
-    modal.className = 'cart-modal';
+  if (!document.getElementById("cart-modal")) {
+    const modal = document.createElement("div");
+    modal.id = "cart-modal";
+    modal.className = "cart-modal";
     modal.innerHTML = `
       <div class="cart-modal-overlay"></div>
       <div class="cart-modal-content">
@@ -376,17 +385,17 @@ function initializeCartModal() {
       </div>
     `;
     document.body.appendChild(modal);
-    
+
     // Event listeners del modal
-    const overlay = modal.querySelector('.cart-modal-overlay');
-    const closeBtn = modal.querySelector('.cart-modal-close');
-    
-    overlay.addEventListener('click', closeCartModal);
-    closeBtn.addEventListener('click', closeCartModal);
-    
+    const overlay = modal.querySelector(".cart-modal-overlay");
+    const closeBtn = modal.querySelector(".cart-modal-close");
+
+    overlay.addEventListener("click", closeCartModal);
+    closeBtn.addEventListener("click", closeCartModal);
+
     // Cerrar con ESC
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) {
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("active")) {
         closeCartModal();
       }
     });
@@ -397,9 +406,9 @@ function initializeCartModal() {
  * Abre el modal del carrito
  */
 function openCartModal() {
-  const modal = document.getElementById('cart-modal');
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  const modal = document.getElementById("cart-modal");
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
   renderCartItems();
 }
 
@@ -407,18 +416,18 @@ function openCartModal() {
  * Cierra el modal del carrito
  */
 function closeCartModal() {
-  const modal = document.getElementById('cart-modal');
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
+  const modal = document.getElementById("cart-modal");
+  modal.classList.remove("active");
+  document.body.style.overflow = "";
 }
 
 /**
  * Renderiza los items del carrito en el modal
  */
 function renderCartItems() {
-  const container = document.getElementById('cart-items-container');
-  const totalAmount = document.getElementById('cart-total-amount');
-  
+  const container = document.getElementById("cart-items-container");
+  const totalAmount = document.getElementById("cart-total-amount");
+
   if (cart.length === 0) {
     container.innerHTML = `
       <div class="cart-empty">
@@ -429,38 +438,52 @@ function renderCartItems() {
         </button>
       </div>
     `;
-    totalAmount.textContent = '$0';
+    totalAmount.textContent = "$0";
     return;
   }
-  
-  container.innerHTML = cart.map(item => `
+
+  container.innerHTML = cart
+    .map(
+      (item) => `
     <div class="cart-item" data-product-id="${item.id}">
       <img src="${item.image}" alt="${item.title}" />
       <div class="cart-item-info">
         <h4>${item.title}</h4>
-        <p class="cart-item-price">$${item.price.toLocaleString('es-AR')}</p>
+        <p class="cart-item-price">$${item.price.toLocaleString("es-AR")}</p>
       </div>
       <div class="cart-item-controls">
-        <button class="btn-quantity" onclick="updateCartQuantity(${item.id}, ${item.quantity - 1})" aria-label="Disminuir cantidad">
+        <button class="btn-quantity" onclick="updateCartQuantity(${item.id}, ${
+        item.quantity - 1
+      })" aria-label="Disminuir cantidad">
           <i class="fa-solid fa-minus"></i>
         </button>
-        <input type="number" value="${item.quantity}" min="1" class="cart-item-quantity" 
-               onchange="updateCartQuantity(${item.id}, parseInt(this.value))" />
-        <button class="btn-quantity" onclick="updateCartQuantity(${item.id}, ${item.quantity + 1})" aria-label="Aumentar cantidad">
+        <input type="number" value="${
+          item.quantity
+        }" min="1" class="cart-item-quantity" 
+               onchange="updateCartQuantity(${
+                 item.id
+               }, parseInt(this.value))" />
+        <button class="btn-quantity" onclick="updateCartQuantity(${item.id}, ${
+        item.quantity + 1
+      })" aria-label="Aumentar cantidad">
           <i class="fa-solid fa-plus"></i>
         </button>
       </div>
       <div class="cart-item-subtotal">
-        <p>$${(item.price * item.quantity).toLocaleString('es-AR')}</p>
+        <p>$${(item.price * item.quantity).toLocaleString("es-AR")}</p>
       </div>
-      <button class="btn-remove-item" onclick="removeFromCart(${item.id})" aria-label="Eliminar producto">
+      <button class="btn-remove-item" onclick="removeFromCart(${
+        item.id
+      })" aria-label="Eliminar producto">
         <i class="fa-solid fa-trash"></i>
       </button>
     </div>
-  `).join('');
-  
+  `
+    )
+    .join("");
+
   const total = calculateCartTotal();
-  totalAmount.textContent = `$${total.toLocaleString('es-AR')}`;
+  totalAmount.textContent = `$${total.toLocaleString("es-AR")}`;
 }
 
 /**
@@ -470,33 +493,35 @@ function attachCartButtonEvents() {
   // Botón del carrito en el header
   const cartButton = document.querySelector('a[href="/carrito"]');
   if (cartButton) {
-    cartButton.addEventListener('click', (e) => {
+    cartButton.addEventListener("click", (e) => {
       e.preventDefault();
       openCartModal();
     });
   }
-  
+
   // Botones "Agregar al carrito" estáticos
-  const staticCartButtons = document.querySelectorAll('.btn-add-cart:not([data-product-id])');
-  staticCartButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      showCartNotification('Producto agregado al carrito');
-      
+  const staticCartButtons = document.querySelectorAll(
+    ".btn-add-cart:not([data-product-id])"
+  );
+  staticCartButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      showCartNotification("Producto agregado al carrito");
+
       // Simular agregar producto estático
-      const productCard = button.closest('.product-card');
-      const title = productCard.querySelector('h3').textContent;
-      const priceText = productCard.querySelector('.price-current').textContent;
-      const price = parseInt(priceText.replace(/\D/g, ''));
-      const image = productCard.querySelector('img').src;
-      
+      const productCard = button.closest(".product-card");
+      const title = productCard.querySelector("h3").textContent;
+      const priceText = productCard.querySelector(".price-current").textContent;
+      const price = parseInt(priceText.replace(/\D/g, ""));
+      const image = productCard.querySelector("img").src;
+
       const staticProduct = {
         id: Date.now(), // ID único temporal
         title: title,
         price: price,
         image: image,
-        quantity: 1
+        quantity: 1,
       };
-      
+
       cart.push(staticProduct);
       saveCartToStorage();
       updateCartUI();
@@ -509,39 +534,49 @@ function attachCartButtonEvents() {
  * Inicializa el formulario de contacto con validación
  */
 function initializeContactForm() {
-  const form = document.querySelector('.contact-form');
-  
+  const form = document.querySelector(".contact-form");
+
   if (!form) return;
-  
-  const nameInput = document.getElementById('contact-name');
-  const emailInput = document.getElementById('contact-email');
-  const phoneInput = document.getElementById('contact-phone');
-  const subjectSelect = document.getElementById('contact-subject');
-  const messageTextarea = document.getElementById('contact-message');
-  const acceptCheckbox = document.getElementById('contact-accept');
-  
+
+  const nameInput = document.getElementById("contact-name");
+  const emailInput = document.getElementById("contact-email");
+  const phoneInput = document.getElementById("contact-phone");
+  const subjectSelect = document.getElementById("contact-subject");
+  const messageTextarea = document.getElementById("contact-message");
+  const acceptCheckbox = document.getElementById("contact-accept");
+
   // Validación en tiempo real
-  nameInput.addEventListener('blur', () => validateName(nameInput));
-  emailInput.addEventListener('blur', () => validateEmail(emailInput));
-  phoneInput.addEventListener('blur', () => validatePhone(phoneInput));
-  messageTextarea.addEventListener('blur', () => validateMessage(messageTextarea));
-  
+  nameInput.addEventListener("blur", () => validateName(nameInput));
+  emailInput.addEventListener("blur", () => validateEmail(emailInput));
+  phoneInput.addEventListener("blur", () => validatePhone(phoneInput));
+  messageTextarea.addEventListener("blur", () =>
+    validateMessage(messageTextarea)
+  );
+
   // Validación al enviar
-  form.addEventListener('submit', (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
-    
+
     // Validar todos los campos
     const isNameValid = validateName(nameInput);
     const isEmailValid = validateEmail(emailInput);
     const isSubjectValid = validateSubject(subjectSelect);
     const isMessageValid = validateMessage(messageTextarea);
     const isAcceptValid = validateAccept(acceptCheckbox);
-    
-    if (isNameValid && isEmailValid && isSubjectValid && isMessageValid && isAcceptValid) {
+
+    if (
+      isNameValid &&
+      isEmailValid &&
+      isSubjectValid &&
+      isMessageValid &&
+      isAcceptValid
+    ) {
       // Si todo es válido, enviar el formulario
       submitContactForm(form);
     } else {
-      showErrorMessage('Por favor, completa todos los campos obligatorios correctamente.');
+      showErrorMessage(
+        "Por favor, completa todos los campos obligatorios correctamente."
+      );
     }
   });
 }
@@ -553,17 +588,17 @@ function initializeContactForm() {
  */
 function validateName(input) {
   const value = input.value.trim();
-  
+
   if (value.length === 0) {
-    showFieldError(input, 'El nombre es obligatorio');
+    showFieldError(input, "El nombre es obligatorio");
     return false;
   }
-  
+
   if (value.length < 3) {
-    showFieldError(input, 'El nombre debe tener al menos 3 caracteres');
+    showFieldError(input, "El nombre debe tener al menos 3 caracteres");
     return false;
   }
-  
+
   clearFieldError(input);
   return true;
 }
@@ -576,17 +611,17 @@ function validateName(input) {
 function validateEmail(input) {
   const value = input.value.trim();
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
+
   if (value.length === 0) {
-    showFieldError(input, 'El email es obligatorio');
+    showFieldError(input, "El email es obligatorio");
     return false;
   }
-  
+
   if (!emailRegex.test(value)) {
-    showFieldError(input, 'Por favor, ingresa un email válido');
+    showFieldError(input, "Por favor, ingresa un email válido");
     return false;
   }
-  
+
   clearFieldError(input);
   return true;
 }
@@ -598,16 +633,16 @@ function validateEmail(input) {
  */
 function validatePhone(input) {
   const value = input.value.trim();
-  
+
   // El teléfono es opcional, pero si se ingresa debe tener formato válido
   if (value.length > 0) {
     const phoneRegex = /^[+]?[\d\s\-()]{8,20}$/;
     if (!phoneRegex.test(value)) {
-      showFieldError(input, 'Por favor, ingresa un teléfono válido');
+      showFieldError(input, "Por favor, ingresa un teléfono válido");
       return false;
     }
   }
-  
+
   clearFieldError(input);
   return true;
 }
@@ -618,11 +653,11 @@ function validatePhone(input) {
  * @returns {boolean} - True si es válido
  */
 function validateSubject(select) {
-  if (select.value === '') {
-    showFieldError(select, 'Por favor, selecciona un asunto');
+  if (select.value === "") {
+    showFieldError(select, "Por favor, selecciona un asunto");
     return false;
   }
-  
+
   clearFieldError(select);
   return true;
 }
@@ -634,17 +669,17 @@ function validateSubject(select) {
  */
 function validateMessage(textarea) {
   const value = textarea.value.trim();
-  
+
   if (value.length === 0) {
-    showFieldError(textarea, 'El mensaje es obligatorio');
+    showFieldError(textarea, "El mensaje es obligatorio");
     return false;
   }
-  
+
   if (value.length < 10) {
-    showFieldError(textarea, 'El mensaje debe tener al menos 10 caracteres');
+    showFieldError(textarea, "El mensaje debe tener al menos 10 caracteres");
     return false;
   }
-  
+
   clearFieldError(textarea);
   return true;
 }
@@ -656,10 +691,10 @@ function validateMessage(textarea) {
  */
 function validateAccept(checkbox) {
   if (!checkbox.checked) {
-    showFieldError(checkbox, 'Debes aceptar la política de privacidad');
+    showFieldError(checkbox, "Debes aceptar la política de privacidad");
     return false;
   }
-  
+
   clearFieldError(checkbox);
   return true;
 }
@@ -671,18 +706,18 @@ function validateAccept(checkbox) {
  */
 function showFieldError(field, message) {
   clearFieldError(field);
-  
-  field.classList.add('field-error');
-  
-  const errorDiv = document.createElement('div');
-  errorDiv.className = 'field-error-message';
+
+  field.classList.add("field-error");
+
+  const errorDiv = document.createElement("div");
+  errorDiv.className = "field-error-message";
   errorDiv.textContent = message;
   errorDiv.style.cssText = `
     color: #dc2626;
     font-size: 0.875rem;
     margin-top: 0.25rem;
   `;
-  
+
   field.parentElement.appendChild(errorDiv);
 }
 
@@ -691,8 +726,10 @@ function showFieldError(field, message) {
  * @param {HTMLElement} field - Campo a limpiar
  */
 function clearFieldError(field) {
-  field.classList.remove('field-error');
-  const errorMessage = field.parentElement.querySelector('.field-error-message');
+  field.classList.remove("field-error");
+  const errorMessage = field.parentElement.querySelector(
+    ".field-error-message"
+  );
   if (errorMessage) {
     errorMessage.remove();
   }
@@ -703,32 +740,37 @@ function clearFieldError(field) {
  * @param {HTMLFormElement} form - Formulario a enviar
  */
 async function submitContactForm(form) {
-  const submitButton = form.querySelector('.btn-submit');
+  const submitButton = form.querySelector(".btn-submit");
   const originalText = submitButton.innerHTML;
-  
+
   // Deshabilitar botón y mostrar loading
   submitButton.disabled = true;
-  submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
-  
+  submitButton.innerHTML =
+    '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+
   try {
     const formData = new FormData(form);
     const response = await fetch(form.action, {
-      method: 'POST',
+      method: "POST",
       body: formData,
       headers: {
-        'Accept': 'application/json'
-      }
+        Accept: "application/json",
+      },
     });
-    
+
     if (response.ok) {
-      showSuccessMessage('¡Mensaje enviado correctamente! Te responderemos pronto.');
+      showSuccessMessage(
+        "¡Mensaje enviado correctamente! Te responderemos pronto."
+      );
       form.reset();
     } else {
-      throw new Error('Error al enviar el formulario');
+      throw new Error("Error al enviar el formulario");
     }
   } catch (error) {
-    console.error('Error:', error);
-    showErrorMessage('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.');
+    console.error("Error:", error);
+    showErrorMessage(
+      "Hubo un error al enviar el mensaje. Por favor, intenta nuevamente."
+    );
   } finally {
     submitButton.disabled = false;
     submitButton.innerHTML = originalText;
@@ -740,8 +782,8 @@ async function submitContactForm(form) {
  * @param {string} message - Mensaje a mostrar
  */
 function showSuccessMessage(message) {
-  const notification = document.createElement('div');
-  notification.className = 'success-notification';
+  const notification = document.createElement("div");
+  notification.className = "success-notification";
   notification.style.cssText = `
     position: fixed;
     top: 100px;
@@ -757,11 +799,11 @@ function showSuccessMessage(message) {
   notification.innerHTML = `
     <i class="fa-solid fa-check-circle"></i> ${message}
   `;
-  
+
   document.body.appendChild(notification);
-  
+
   setTimeout(() => {
-    notification.style.animation = 'slideOut 0.3s ease';
+    notification.style.animation = "slideOut 0.3s ease";
     setTimeout(() => notification.remove(), 300);
   }, 4000);
 }
@@ -771,9 +813,9 @@ function showSuccessMessage(message) {
  * Inicializa el proceso de checkout
  */
 function initializeCheckout() {
-  const checkoutBtn = document.querySelector('.btn-checkout');
+  const checkoutBtn = document.querySelector(".btn-checkout");
   if (checkoutBtn) {
-    checkoutBtn.addEventListener('click', openCheckoutModal);
+    checkoutBtn.addEventListener("click", openCheckoutModal);
   }
 }
 
@@ -782,21 +824,21 @@ function initializeCheckout() {
  */
 function openCheckoutModal() {
   if (cart.length === 0) {
-    showErrorMessage('Tu carrito está vacío');
+    showErrorMessage("Tu carrito está vacío");
     return;
   }
 
   // Crear modal de checkout si no existe
-  if (!document.getElementById('checkout-modal')) {
+  if (!document.getElementById("checkout-modal")) {
     createCheckoutModal();
   }
 
   closeCartModal();
-  
-  const modal = document.getElementById('checkout-modal');
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-  
+
+  const modal = document.getElementById("checkout-modal");
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
+
   renderCheckoutSummary();
 }
 
@@ -804,9 +846,9 @@ function openCheckoutModal() {
  * Crea el modal de checkout
  */
 function createCheckoutModal() {
-  const modal = document.createElement('div');
-  modal.id = 'checkout-modal';
-  modal.className = 'checkout-modal';
+  const modal = document.createElement("div");
+  modal.id = "checkout-modal";
+  modal.className = "checkout-modal";
   modal.innerHTML = `
     <div class="checkout-modal-overlay"></div>
     <div class="checkout-modal-content">
@@ -933,47 +975,47 @@ function createCheckoutModal() {
       </div>
     </div>
   `;
-  
+
   document.body.appendChild(modal);
-  
+
   // Event listeners
-  const overlay = modal.querySelector('.checkout-modal-overlay');
-  const closeBtn = modal.querySelector('.checkout-modal-close');
-  
-  overlay.addEventListener('click', closeCheckoutModal);
-  closeBtn.addEventListener('click', closeCheckoutModal);
-  
+  const overlay = modal.querySelector(".checkout-modal-overlay");
+  const closeBtn = modal.querySelector(".checkout-modal-close");
+
+  overlay.addEventListener("click", closeCheckoutModal);
+  closeBtn.addEventListener("click", closeCheckoutModal);
+
   // Validación en tiempo real
-  const form = document.getElementById('checkout-form');
-  const inputs = form.querySelectorAll('input[required], select[required]');
-  
-  inputs.forEach(input => {
-    input.addEventListener('blur', () => validateCheckoutField(input));
+  const form = document.getElementById("checkout-form");
+  const inputs = form.querySelectorAll("input[required], select[required]");
+
+  inputs.forEach((input) => {
+    input.addEventListener("blur", () => validateCheckoutField(input));
   });
 
   // Event listener para cambio de método de pago
-  const paymentSelect = document.getElementById('checkout-payment');
-  paymentSelect.addEventListener('change', handlePaymentMethodChange);
+  const paymentSelect = document.getElementById("checkout-payment");
+  paymentSelect.addEventListener("change", handlePaymentMethodChange);
 }
 
 /**
  * Maneja el cambio de método de pago y muestra campos dinámicos
  */
 function handlePaymentMethodChange() {
-  const paymentMethod = document.getElementById('checkout-payment').value;
-  const container = document.getElementById('payment-fields-container');
-  
+  const paymentMethod = document.getElementById("checkout-payment").value;
+  const container = document.getElementById("payment-fields-container");
+
   // Limpiar campos anteriores
-  container.innerHTML = '';
-  
+  container.innerHTML = "";
+
   if (!paymentMethod) return;
-  
-  let fieldsHTML = '';
-  
+
+  let fieldsHTML = "";
+
   // Campos según el método de pago seleccionado
-  switch(paymentMethod) {
-    case 'credit-card':
-    case 'debit-card':
+  switch (paymentMethod) {
+    case "credit-card":
+    case "debit-card":
       fieldsHTML = `
         <div class="payment-fields-section">
           <div class="form-group">
@@ -1015,8 +1057,8 @@ function handlePaymentMethodChange() {
         </div>
       `;
       break;
-      
-    case 'transfer':
+
+    case "transfer":
       fieldsHTML = `
         <div class="payment-fields-section">
           <div class="transfer-info">
@@ -1055,8 +1097,8 @@ function handlePaymentMethodChange() {
         </div>
       `;
       break;
-      
-    case 'mercadopago':
+
+    case "mercadopago":
       fieldsHTML = `
         <div class="payment-fields-section">
           <div class="mercadopago-info">
@@ -1089,23 +1131,25 @@ function handlePaymentMethodChange() {
       `;
       break;
   }
-  
+
   container.innerHTML = fieldsHTML;
-  
+
   // Agregar validación a los nuevos campos
-  const newInputs = container.querySelectorAll('input[required], select[required]');
-  newInputs.forEach(input => {
-    input.addEventListener('blur', () => validateCheckoutField(input));
-    
+  const newInputs = container.querySelectorAll(
+    "input[required], select[required]"
+  );
+  newInputs.forEach((input) => {
+    input.addEventListener("blur", () => validateCheckoutField(input));
+
     // Formateo automático para campos de tarjeta
-    if (input.id === 'card-number') {
-      input.addEventListener('input', formatCardNumber);
+    if (input.id === "card-number") {
+      input.addEventListener("input", formatCardNumber);
     }
-    if (input.id === 'card-expiry') {
-      input.addEventListener('input', formatCardExpiry);
+    if (input.id === "card-expiry") {
+      input.addEventListener("input", formatCardExpiry);
     }
-    if (input.id === 'card-cvv') {
-      input.addEventListener('input', formatCVV);
+    if (input.id === "card-cvv") {
+      input.addEventListener("input", formatCVV);
     }
   });
 }
@@ -1114,8 +1158,8 @@ function handlePaymentMethodChange() {
  * Formatea el número de tarjeta
  */
 function formatCardNumber(e) {
-  let value = e.target.value.replace(/\s/g, '');
-  let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+  let value = e.target.value.replace(/\s/g, "");
+  let formattedValue = value.match(/.{1,4}/g)?.join(" ") || value;
   e.target.value = formattedValue;
 }
 
@@ -1123,9 +1167,9 @@ function formatCardNumber(e) {
  * Formatea la fecha de vencimiento
  */
 function formatCardExpiry(e) {
-  let value = e.target.value.replace(/\D/g, '');
+  let value = e.target.value.replace(/\D/g, "");
   if (value.length >= 2) {
-    value = value.slice(0, 2) + '/' + value.slice(2, 4);
+    value = value.slice(0, 2) + "/" + value.slice(2, 4);
   }
   e.target.value = value;
 }
@@ -1134,17 +1178,17 @@ function formatCardExpiry(e) {
  * Formatea el CVV (solo números)
  */
 function formatCVV(e) {
-  e.target.value = e.target.value.replace(/\D/g, '');
+  e.target.value = e.target.value.replace(/\D/g, "");
 }
 
 /**
  * Cierra el modal de checkout
  */
 function closeCheckoutModal() {
-  const modal = document.getElementById('checkout-modal');
+  const modal = document.getElementById("checkout-modal");
   if (modal) {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
   }
 }
 
@@ -1152,14 +1196,16 @@ function closeCheckoutModal() {
  * Renderiza el resumen de la compra
  */
 function renderCheckoutSummary() {
-  const itemsList = document.getElementById('checkout-items-list');
-  const subtotalEl = document.getElementById('checkout-subtotal');
-  const totalEl = document.getElementById('checkout-total');
-  
+  const itemsList = document.getElementById("checkout-items-list");
+  const subtotalEl = document.getElementById("checkout-subtotal");
+  const totalEl = document.getElementById("checkout-total");
+
   if (!itemsList) return;
-  
+
   // Renderizar items
-  itemsList.innerHTML = cart.map(item => `
+  itemsList.innerHTML = cart
+    .map(
+      (item) => `
     <div class="checkout-item">
       <img src="${item.image}" alt="${item.title}" />
       <div class="checkout-item-info">
@@ -1167,18 +1213,20 @@ function renderCheckoutSummary() {
         <p>Cantidad: ${item.quantity}</p>
       </div>
       <div class="checkout-item-price">
-        ${(item.price * item.quantity).toLocaleString('es-AR')}
+        ${(item.price * item.quantity).toLocaleString("es-AR")}
       </div>
     </div>
-  `).join('');
-  
+  `
+    )
+    .join("");
+
   // Calcular totales
   const subtotal = calculateCartTotal();
   const shipping = 15000;
   const total = subtotal + shipping;
-  
-  subtotalEl.textContent = `${subtotal.toLocaleString('es-AR')}`;
-  totalEl.textContent = `${total.toLocaleString('es-AR')}`;
+
+  subtotalEl.textContent = `${subtotal.toLocaleString("es-AR")}`;
+  totalEl.textContent = `${total.toLocaleString("es-AR")}`;
 }
 
 /**
@@ -1188,53 +1236,53 @@ function renderCheckoutSummary() {
  */
 function validateCheckoutField(field) {
   const value = field.value.trim();
-  
-  if (field.hasAttribute('required') && value === '') {
-    showFieldError(field, 'Este campo es obligatorio');
+
+  if (field.hasAttribute("required") && value === "") {
+    showFieldError(field, "Este campo es obligatorio");
     return false;
   }
-  
-  if (field.type === 'email') {
+
+  if (field.type === "email") {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(value)) {
-      showFieldError(field, 'Email inválido');
+      showFieldError(field, "Email inválido");
       return false;
     }
   }
-  
-  if (field.type === 'tel') {
+
+  if (field.type === "tel") {
     const phoneRegex = /^[+]?[\d\s\-()]{8,20}$/;
     if (!phoneRegex.test(value)) {
-      showFieldError(field, 'Teléfono inválido');
+      showFieldError(field, "Teléfono inválido");
       return false;
     }
   }
-  
+
   // Validaciones específicas para tarjeta
-  if (field.id === 'card-number' && value) {
+  if (field.id === "card-number" && value) {
     const cardRegex = /^\d{4}\s\d{4}\s\d{4}\s\d{4}$/;
     if (!cardRegex.test(value)) {
-      showFieldError(field, 'Número de tarjeta inválido');
+      showFieldError(field, "Número de tarjeta inválido");
       return false;
     }
   }
-  
-  if (field.id === 'card-expiry' && value) {
+
+  if (field.id === "card-expiry" && value) {
     const expiryRegex = /^\d{2}\/\d{2}$/;
     if (!expiryRegex.test(value)) {
-      showFieldError(field, 'Formato: MM/AA');
+      showFieldError(field, "Formato: MM/AA");
       return false;
     }
   }
-  
-  if (field.id === 'card-cvv' && value) {
+
+  if (field.id === "card-cvv" && value) {
     const cvvRegex = /^\d{3,4}$/;
     if (!cvvRegex.test(value)) {
-      showFieldError(field, 'CVV inválido (3-4 dígitos)');
+      showFieldError(field, "CVV inválido (3-4 dígitos)");
       return false;
     }
   }
-  
+
   clearFieldError(field);
   return true;
 }
@@ -1243,58 +1291,62 @@ function validateCheckoutField(field) {
  * Procesa la orden de compra
  */
 async function processOrder() {
-  const form = document.getElementById('checkout-form');
-  const paymentContainer = document.getElementById('payment-fields-container');
-  
+  const form = document.getElementById("checkout-form");
+  const paymentContainer = document.getElementById("payment-fields-container");
+
   // Validar campos del formulario principal
-  const mainInputs = form.querySelectorAll('input[required]:not(#payment-fields-container input), select[required]:not(#payment-fields-container select)');
+  const mainInputs = form.querySelectorAll(
+    "input[required]:not(#payment-fields-container input), select[required]:not(#payment-fields-container select)"
+  );
   let isValid = true;
-  
-  mainInputs.forEach(input => {
+
+  mainInputs.forEach((input) => {
     if (!validateCheckoutField(input)) {
       isValid = false;
     }
   });
-  
+
   // Validar campos del método de pago
-  const paymentInputs = paymentContainer.querySelectorAll('input[required], select[required]');
-  paymentInputs.forEach(input => {
+  const paymentInputs = paymentContainer.querySelectorAll(
+    "input[required], select[required]"
+  );
+  paymentInputs.forEach((input) => {
     if (!validateCheckoutField(input)) {
       isValid = false;
     }
   });
-  
+
   if (!isValid) {
-    showErrorMessage('Por favor, completa todos los campos correctamente');
+    showErrorMessage("Por favor, completa todos los campos correctamente");
     return;
   }
-  
+
   // Obtener datos del formulario
   const orderData = {
     customer: {
-      name: document.getElementById('checkout-name').value,
-      email: document.getElementById('checkout-email').value,
-      phone: document.getElementById('checkout-phone').value,
+      name: document.getElementById("checkout-name").value,
+      email: document.getElementById("checkout-email").value,
+      phone: document.getElementById("checkout-phone").value,
     },
     shipping: {
-      address: document.getElementById('checkout-address').value,
-      city: document.getElementById('checkout-city').value,
-      province: document.getElementById('checkout-province').value,
-      zip: document.getElementById('checkout-zip').value,
-      country: document.getElementById('checkout-country').value,
+      address: document.getElementById("checkout-address").value,
+      city: document.getElementById("checkout-city").value,
+      province: document.getElementById("checkout-province").value,
+      zip: document.getElementById("checkout-zip").value,
+      country: document.getElementById("checkout-country").value,
     },
     payment: {
-      method: document.getElementById('checkout-payment').value,
-      details: getPaymentDetails()
+      method: document.getElementById("checkout-payment").value,
+      details: getPaymentDetails(),
     },
     items: cart,
     subtotal: calculateCartTotal(),
     shipping: 15000,
     total: calculateCartTotal() + 15000,
     orderNumber: generateOrderNumber(),
-    date: new Date().toISOString()
+    date: new Date().toISOString(),
   };
-  
+
   // Simular procesamiento
   await simulatePaymentProcessing(orderData);
 }
@@ -1304,30 +1356,34 @@ async function processOrder() {
  * @returns {Object} - Detalles del pago
  */
 function getPaymentDetails() {
-  const paymentMethod = document.getElementById('checkout-payment').value;
+  const paymentMethod = document.getElementById("checkout-payment").value;
   const details = { method: paymentMethod };
-  
-  switch(paymentMethod) {
-    case 'credit-card':
-    case 'debit-card':
-      const cardNumber = document.getElementById('card-number')?.value || '';
-      details.cardLast4 = cardNumber.replace(/\s/g, '').slice(-4);
-      details.cardHolder = document.getElementById('card-name')?.value || '';
-      details.installments = document.getElementById('installments')?.value || '1';
+
+  switch (paymentMethod) {
+    case "credit-card":
+    case "debit-card":
+      const cardNumber = document.getElementById("card-number")?.value || "";
+      details.cardLast4 = cardNumber.replace(/\s/g, "").slice(-4);
+      details.cardHolder = document.getElementById("card-name")?.value || "";
+      details.installments =
+        document.getElementById("installments")?.value || "1";
       break;
-      
-    case 'transfer':
-      details.transferName = document.getElementById('transfer-name')?.value || '';
-      details.bank = document.getElementById('transfer-bank')?.value || '';
-      details.comprobante = document.getElementById('transfer-number')?.value || '';
+
+    case "transfer":
+      details.transferName =
+        document.getElementById("transfer-name")?.value || "";
+      details.bank = document.getElementById("transfer-bank")?.value || "";
+      details.comprobante =
+        document.getElementById("transfer-number")?.value || "";
       break;
-      
-    case 'mercadopago':
-      details.email = document.getElementById('mp-email')?.value || '';
-      details.paymentType = document.getElementById('mp-payment-type')?.value || '';
+
+    case "mercadopago":
+      details.email = document.getElementById("mp-email")?.value || "";
+      details.paymentType =
+        document.getElementById("mp-payment-type")?.value || "";
       break;
   }
-  
+
   return details;
 }
 
@@ -1336,34 +1392,36 @@ function getPaymentDetails() {
  * @param {Object} orderData - Datos de la orden
  */
 async function simulatePaymentProcessing(orderData) {
-  const button = document.querySelector('.btn-place-order');
+  const button = document.querySelector(".btn-place-order");
   const originalText = button.innerHTML;
-  
+
   // Deshabilitar botón
   button.disabled = true;
-  button.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Procesando pago...';
-  
+  button.innerHTML =
+    '<i class="fa-solid fa-spinner fa-spin"></i> Procesando pago...';
+
   try {
     // Simular delay de procesamiento (2 segundos)
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     // Guardar orden en localStorage (simulación de backend)
     saveOrder(orderData);
-    
+
     // Limpiar carrito
     cart = [];
     saveCartToStorage();
     updateCartUI();
-    
+
     // Cerrar modal de checkout
     closeCheckoutModal();
-    
+
     // Mostrar confirmación
     showOrderConfirmation(orderData);
-    
   } catch (error) {
-    console.error('Error:', error);
-    showErrorMessage('Hubo un error al procesar tu pedido. Intenta nuevamente.');
+    console.error("Error:", error);
+    showErrorMessage(
+      "Hubo un error al procesar tu pedido. Intenta nuevamente."
+    );
     button.disabled = false;
     button.innerHTML = originalText;
   }
@@ -1374,10 +1432,10 @@ async function simulatePaymentProcessing(orderData) {
  * @param {Object} orderData - Datos de la orden
  */
 function saveOrder(orderData) {
-  let orders = localStorage.getItem('redbuilds_orders');
+  let orders = localStorage.getItem("redbuilds_orders");
   orders = orders ? JSON.parse(orders) : [];
   orders.push(orderData);
-  localStorage.setItem('redbuilds_orders', JSON.stringify(orders));
+  localStorage.setItem("redbuilds_orders", JSON.stringify(orders));
 }
 
 /**
@@ -1396,9 +1454,9 @@ function generateOrderNumber() {
  */
 function showOrderConfirmation(orderData) {
   // Crear modal de confirmación
-  const modal = document.createElement('div');
-  modal.id = 'confirmation-modal';
-  modal.className = 'confirmation-modal active';
+  const modal = document.createElement("div");
+  modal.id = "confirmation-modal";
+  modal.className = "confirmation-modal active";
   modal.innerHTML = `
     <div class="confirmation-modal-overlay"></div>
     <div class="confirmation-modal-content">
@@ -1417,21 +1475,29 @@ function showOrderConfirmation(orderData) {
         </div>
         <div class="confirmation-row">
           <span class="label">Total pagado:</span>
-          <span class="value"><strong>${orderData.total.toLocaleString('es-AR')}</strong></span>
+          <span class="value"><strong>${orderData.total.toLocaleString(
+            "es-AR"
+          )}</strong></span>
         </div>
         <div class="confirmation-row">
           <span class="label">Método de pago:</span>
-          <span class="value">${getPaymentMethodName(orderData.payment.method)}</span>
+          <span class="value">${getPaymentMethodName(
+            orderData.payment.method
+          )}</span>
         </div>
         <div class="confirmation-row">
           <span class="label">Envío a:</span>
-          <span class="value">${orderData.shipping.address}, ${orderData.shipping.city}</span>
+          <span class="value">${orderData.shipping.address}, ${
+    orderData.shipping.city
+  }</span>
         </div>
       </div>
 
       <div class="confirmation-email">
         <i class="fa-solid fa-envelope"></i>
-        <p>Te enviamos un email de confirmación a <strong>${orderData.customer.email}</strong></p>
+        <p>Te enviamos un email de confirmación a <strong>${
+          orderData.customer.email
+        }</strong></p>
       </div>
 
       <div class="confirmation-actions">
@@ -1445,10 +1511,10 @@ function showOrderConfirmation(orderData) {
       </div>
     </div>
   `;
-  
+
   document.body.appendChild(modal);
-  document.body.style.overflow = 'hidden';
-  
+  document.body.style.overflow = "hidden";
+
   // Reproducir sonido de éxito (opcional)
   playSuccessSound();
 }
@@ -1457,10 +1523,10 @@ function showOrderConfirmation(orderData) {
  * Cierra el modal de confirmación
  */
 function closeConfirmationModal() {
-  const modal = document.getElementById('confirmation-modal');
+  const modal = document.getElementById("confirmation-modal");
   if (modal) {
     modal.remove();
-    document.body.style.overflow = '';
+    document.body.style.overflow = "";
   }
 }
 
@@ -1471,10 +1537,10 @@ function closeConfirmationModal() {
  */
 function getPaymentMethodName(method) {
   const methods = {
-    'credit-card': 'Tarjeta de Crédito',
-    'debit-card': 'Tarjeta de Débito',
-    'transfer': 'Transferencia Bancaria',
-    'mercadopago': 'MercadoPago'
+    "credit-card": "Tarjeta de Crédito",
+    "debit-card": "Tarjeta de Débito",
+    transfer: "Transferencia Bancaria",
+    mercadopago: "MercadoPago",
   };
   return methods[method] || method;
 }
@@ -1485,19 +1551,23 @@ function getPaymentMethodName(method) {
 function playSuccessSound() {
   // Sonido corto de éxito usando Web Audio API
   try {
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const audioContext = new (window.AudioContext ||
+      window.webkitAudioContext)();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
-    
+
     oscillator.connect(gainNode);
     gainNode.connect(audioContext.destination);
-    
+
     oscillator.frequency.value = 800;
-    oscillator.type = 'sine';
-    
+    oscillator.type = "sine";
+
     gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-    
+    gainNode.gain.exponentialRampToValueAtTime(
+      0.01,
+      audioContext.currentTime + 0.5
+    );
+
     oscillator.start(audioContext.currentTime);
     oscillator.stop(audioContext.currentTime + 0.5);
   } catch (error) {
@@ -1507,7 +1577,7 @@ function playSuccessSound() {
 
 // ==================== ANIMACIONES CSS ====================
 // Agregar estilos para animaciones y campos de pago
-const style = document.createElement('style');
+const style = document.createElement("style");
 style.textContent = `
   @keyframes slideIn {
     from {
