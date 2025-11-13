@@ -1328,7 +1328,7 @@ async function processOrder() {
       email: document.getElementById("checkout-email").value,
       phone: document.getElementById("checkout-phone").value,
     },
-    shipping: {
+    location: {
       address: document.getElementById("checkout-address").value,
       city: document.getElementById("checkout-city").value,
       province: document.getElementById("checkout-province").value,
@@ -1487,8 +1487,8 @@ function showOrderConfirmation(orderData) {
         </div>
         <div class="confirmation-row">
           <span class="label">Envío a:</span>
-          <span class="value">${orderData.shipping.address}, ${
-    orderData.shipping.city
+          <span class="value">${orderData.location.address}, ${
+    orderData.location.city
   }</span>
         </div>
       </div>
