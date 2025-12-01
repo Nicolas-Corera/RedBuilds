@@ -316,24 +316,6 @@ setInterval(() => {
 }, 5000);
 ```
 
-## 🔧 Funcionalidades Futuras
-
-Posibles mejoras para próximas versiones:
-
-- [ ] Backend con Node.js y Express
-- [ ] Base de datos (MongoDB/PostgreSQL)
-- [ ] Autenticación de usuarios
-- [ ] Pasarela de pago real (MercadoPago/Stripe)
-- [ ] Panel de administración
-- [ ] Sistema de filtros avanzados
-- [ ] Comparador de productos
-- [ ] Wishlist de favoritos
-- [ ] Sistema de reviews y comentarios
-- [ ] Chat en vivo para soporte
-- [ ] Calculadora de compatibilidad de componentes
-- [ ] Historial de compras
-- [ ] Tracking de envíos
-
 ## 📊 APIs Utilizadas
 
 ### Fake Store API
@@ -349,23 +331,6 @@ Posibles mejoras para próximas versiones:
 - **Método**: POST
 - **Content-Type**: application/json
 - **Campos**: name, email, phone, subject, message, accept
-
-## 🐛 Troubleshooting
-
-### Los productos no se cargan
-
-- **Problema**: CORS o API caída
-- **Solución**: Usar servidor local (http-server, Live Server)
-
-### El carrito no persiste
-
-- **Problema**: localStorage deshabilitado
-- **Solución**: Verificar configuración del navegador
-
-### El formulario no envía
-
-- **Problema**: Validación fallando o Formspree no configurado
-- **Solución**: Verificar consola del navegador para errores
 
 ## 👨‍💻 Autor
 
